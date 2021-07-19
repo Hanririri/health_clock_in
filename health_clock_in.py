@@ -11,7 +11,7 @@ driver = webdriver.Firefox()
 url = "http://yqtb.gzhu.edu.cn/infoplus/form/XNYQSB/start"
 # 将窗口最大化
 # browser.maximize_window()
-# get verification code to path:"~/Downloads/captcha.jsp.png"
+# get verification code to path:"/home/<user>/Downloads/captcha.jsp.png"
 while True:
   driver.get(url)
   time.sleep(2)
@@ -28,14 +28,14 @@ while True:
 
   #recognize picture
   time.sleep(10)
-  img = Image.open("../Downloads/captcha.jsp.png")
+  img = Image.open("/home/<user>/Downloads/captcha.jsp.png")
   result = pytesseract.image_to_string(img)
   print(result)
 
   elem_user = driver.find_element_by_name("username")
-  elem_user.send_keys("username")
+  elem_user.send_keys("<your_username>")
   elem_pwd = driver.find_element_by_name("password")
-  elem_pwd.send_keys("password")
+  elem_pwd.send_keys("<your_password>")
   elem_pwd = driver.find_element_by_name("captcha")
   elem_pwd.send_keys(result)
   time.sleep(1)
