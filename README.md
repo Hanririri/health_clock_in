@@ -15,21 +15,22 @@ Python3, pip, selenium, pyautogui, pytesseract, PIL等库都要安装好。我�
 ## 修改代码
 10行：`driver = webdriver.Firefox()`<br>
 如果是Chrome的话改：`driver = webdriver.Chrome()`<br>
-31行：`img = Image.open("../Downloads/captcha.jsp.png")`<br>
-路径是相对路径，保存验证码的图片，浏览器默认下载到`/home/user/Downloads`这个文件夹，看着改就好。<br>
+31行：`img = Image.open("/home/<user>/Downloads/captcha.jsp.png")`<br>
+路径是绝对路径(避免cron不能执行的情况)，保存验证码的图片，浏览器默认下载到`/home/<user>/Downloads`这个文件夹，看着改就好。<br>
 36行和38行是账户和密码，写自己的校园学号和密码。<br>
 完事后`python3 health_clock_in.py`试试能不能正常运行，不能正常运行就一直debug到能运行为止，前置环境安装有点繁琐，像selenium还要装浏览器的插件什么的。<br>
 能正常运行就下一步，添加进自动执行计划。
 ## crontab
 ```
 sudo service cron start
-sudo crontab -e
+crontab -e
 ```
-用vim编辑一下，添加执行命令
+用vim编辑一下，在文件的最后添加执行命令:
 ```
-0 7 * * * python3 /home/user/.../health_clock_in.py
+0 7 * * *  export DISPLAY=:0 && /usr/bin/python3 /<path_to_your>/health_clock_in.py >> /dev/null 2>&1
 ```
 0代表分，7代表时，意思是每天7点执行一次这个程序进行打卡。<br>
+设置虚拟显示器为DISPLAY=:0, 不然不能从命令行启动GUI程序。后面的用绝对路径避免path错误使程序无法运行。最后的重定向把向屏幕输出的内容重定向到/dev/null，不然cron也不能运行。<br>
 重启crontab：
 ```
 sudo service cron restart
