@@ -12,7 +12,8 @@ Gzhu的健康打卡页面直接浏览器就可以打开，不一定要从企业�
 我的系统是Ubuntu 20.04 LTS 带desktop, 其他Linux系统应该也能用，要改代码做适配。<br>
 windows装好环境也应该可以用，但是windows电脑24小时不关机真的好吗()<br>
 ## 环境安装
-python3, pip, selenium, ~~pyautogui, pytesseract, PIL~~等库都要安装好。我懒得写了，上网查。有些前置需要apt get install，有些pypi的包直接pip install就好。
+python3, pip, selenium, ~~pyautogui, pytesseract, PIL~~等库都要安装好。我懒得写了，上网查。<br>
+有些前置需要apt get install，有些pypi的包直接pip install就好。
 ## 修改代码
 5行：`driver = webdriver.Firefox()`<br>
 如果是Chrome的话改：`driver = webdriver.Chrome()`<br>
