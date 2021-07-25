@@ -1,17 +1,13 @@
 import time
 from selenium import webdriver
-import requests
+# import requests
 from selenium.webdriver.common.action_chains import ActionChains
 # import pyautogui
 # import pytesseract
 # from PIL import Image
 
-# \u6a21\u62df\u6d4f\u89c8\u5668\u6253\u5f00\u7f51\u7ad9
 driver = webdriver.Firefox()
 url = "http://yqtb.gzhu.edu.cn/infoplus/form/XNYQSB/start"
-# \u5c06\u7a97\u53e3\u6700\u5927\u5316
-# browser.maximize_window()
-# get verification code to path:"~/Downloads/captcha.jsp.png"
 
 while True:
   driver.get(url)
