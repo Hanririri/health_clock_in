@@ -34,9 +34,9 @@ while True:
   #print(result)
 
   elem_user = driver.find_element_by_name("un")
-  elem_user.send_keys("1907400028")
+  elem_user.send_keys("<学号>")
   elem_pwd = driver.find_element_by_name("pd")
-  elem_pwd.send_keys("5738387420")
+  elem_pwd.send_keys("<密码>")
   #elem_pwd = driver.find_element_by_name("captcha")
   #elem_pwd.send_keys(result)
   time.sleep(1)
