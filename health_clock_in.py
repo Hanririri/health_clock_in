@@ -16,25 +16,40 @@ while True:
   time.sleep(1)
   driver.find_element_by_xpath('//*[@id="index_login_btn"]').click() # login in
   time.sleep(6)
-  
-  driver.find_element_by_xpath('//*[@id="preview_start_button"]').click()
-  time.sleep(10)
 
   try:
-    driver.find_element_by_xpath('//*[@id="V1_CTRL262"]').click()
+    driver.find_element_by_xpath('//*[@id="preview_start_button"]').click()
   except:
-    print('Error!')
-    time.sleep(5) # restart
+    print('Login Error!')
+    time.sleep(10) # restart
   else:
     print('success login in!')
     break
 
+while True:
+  try:
+    time.sleep(10)
+    driver.find_element_by_xpath('//*[@id="V1_CTRL82"]').click()
+  except:
+    print('Error!')
+    driver.get(url)
+    time.sleep(10)
+    driver.find_element_by_xpath('//*[@id="preview_start_button"]').click()
+  else:
+    print('success!')
+    break
+  
 time.sleep(1)
-driver.find_element_by_xpath('//*[@id="V1_CTRL82"]').click()
+driver.find_element_by_xpath('//*[@id="V1_CTRL46"]').click()
 time.sleep(1)
+driver.find_element_by_xpath('//*[@id="V1_CTRL262"]').click()
+time.sleep(1)
+driver.find_element_by_xpath('//*[@id="V1_CTRL37"]').click()
+time.sleep(1)
+
 driver.find_element_by_xpath('/html/body/div[4]/form/div/div[1]/div[2]/ul/li[1]/a/nobr').click()
 time.sleep(1)
 print('clock in successfully')
-time.sleep(5)
+time.sleep(10)
 print('end')
 driver.quit()
